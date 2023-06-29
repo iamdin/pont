@@ -80,7 +80,7 @@ export async function findInterface(editor: vscode.TextEditor, manager: Manager)
   const justWords = [words[wordIndex - 1], words[wordIndex]];
   const matchedWords = [];
   let foundInterface = null as Interface;
-  const allConfigs = manager.getStandardOirginConfigs();
+  const allConfigs = manager.getStandardOriginConfigs();
   const hasName = allConfigs.map((config) => config.name).includes(wordsWithOrigin[0]);
   const allLocalDataSources = await Promise.all(manager.getOriginManages().map((item) => item.getDataSource()));
   const currLocalDataSource = await manager.getCurrentOriginManage().getDataSource();

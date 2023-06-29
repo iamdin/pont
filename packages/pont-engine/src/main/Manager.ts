@@ -1,6 +1,6 @@
 import { Manager as OldManager } from '../compatible/Manager';
 
-import type { IStandardBaseConfig, IStandardOirginConfig } from '../types/pontConfig';
+import type { IStandardBaseConfig, IStandardOriginConfig } from '../types/pontConfig';
 
 import { Config } from './Config';
 import { Logger } from './Logger';
@@ -13,7 +13,7 @@ process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = 0 as any;
 export class Manager extends OldManager {
   private standardBaseConfig: IStandardBaseConfig;
 
-  private standardOirginConfigs: IStandardOirginConfig[];
+  private standardOriginConfigs: IStandardOriginConfig[];
 
   private originManages: OriginManage[] = [];
 
@@ -64,14 +64,14 @@ export class Manager extends OldManager {
   }
 
   init(rootPath: string, configDir: string) {
-    const { standardBaseConfig, standardOirginConfigs } = Config.getStandardConfigFromPath(rootPath, configDir);
+    const { standardBaseConfig, standardOriginConfigs } = Config.getStandardConfigFromPath(rootPath, configDir);
     this.standardBaseConfig = standardBaseConfig;
-    this.standardOirginConfigs = standardOirginConfigs;
+    this.standardOriginConfigs = standardOriginConfigs;
 
     this.initBaseTemplate();
     this.initFilesManager();
 
-    this.originManages = standardOirginConfigs.map(
+    this.originManages = standardOriginConfigs.map(
       (config) => new OriginManage(config, standardBaseConfig, this.baseTemplate)
     );
 
@@ -100,8 +100,8 @@ export class Manager extends OldManager {
     return this.standardBaseConfig;
   }
 
-  getStandardOirginConfigs() {
-    return this.standardOirginConfigs;
+  getStandardOriginConfigs() {
+    return this.standardOriginConfigs;
   }
 
   getCurrentOriginManage() {

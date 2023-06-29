@@ -110,7 +110,7 @@ export class CommandCenter {
   @command('pont.switchOrigin')
   async switchOrigin() {
     const currentManager = this.manager.getCurrentOriginManage();
-    const origins: QuickPickItem[] = this.manager.getStandardOirginConfigs().map((conf) => {
+    const origins: QuickPickItem[] = this.manager.getStandardOriginConfigs().map((conf) => {
       return {
         label: conf.name,
         description: conf.originUrl
@@ -396,7 +396,7 @@ export class CommandCenter {
           managerCleanUps.push({ dispose: closeServer });
         }
 
-        setContext('multipleOrigins', manager.getStandardOirginConfigs().length > 1);
+        setContext('multipleOrigins', manager.getStandardOriginConfigs().length > 1);
         setContext('initManager', true);
         setContext('initError', false);
         getPontOriginsProvider().refresh(manager);

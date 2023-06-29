@@ -4,7 +4,7 @@ import { diff } from '../../compatible/diff';
 import type { Model } from '../../compatible/diff';
 import { getRelatedBos } from '../../compatible/utils';
 
-import type { IStandardBaseConfig, IStandardOirginConfig } from '../../types/pontConfig';
+import type { IStandardBaseConfig, IStandardOriginConfig } from '../../types/pontConfig';
 import type { IStandardDataSource } from '../../types/dataSource';
 import type { CodeGenerator } from './CodeGenerator';
 import type { OriginReader } from './OriginReader';
@@ -20,7 +20,7 @@ import { Logger } from '../Logger';
 export class OriginManage {
   private name: string;
 
-  private config: IStandardOirginConfig;
+  private config: IStandardOriginConfig;
 
   /** 异步初始化，使用时注意判空 */
   private dataSource: StandardDataSource;
@@ -45,7 +45,7 @@ export class OriginManage {
     boDiffs: []
   };
 
-  constructor(config: IStandardOirginConfig, baseConfig: IStandardBaseConfig, baseTemplate: BaseTemplate) {
+  constructor(config: IStandardOriginConfig, baseConfig: IStandardBaseConfig, baseTemplate: BaseTemplate) {
     this.name = config.name ?? '';
     this.config = config;
     this.baseConfig = baseConfig;

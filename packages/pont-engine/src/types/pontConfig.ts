@@ -78,7 +78,7 @@ export interface IStandardBaseConfig extends IBaseConfig {
   };
 }
 
-export interface IStandardOirginConfig extends IOriginConfig {
+export interface IStandardOriginConfig extends IOriginConfig {
   rootDir: string;
 
   originType: OriginType;

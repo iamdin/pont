@@ -1,6 +1,6 @@
 import * as path from 'path';
 
-import type { IPontConfig, IStandardBaseConfig, IStandardOirginConfig } from '../types/pontConfig';
+import type { IPontConfig, IStandardBaseConfig, IStandardOriginConfig } from '../types/pontConfig';
 
 import { DataSourceConfig as OldDataSourceConfig, Config as OldConfig } from '../compatible/Config';
 import { PontFileManager } from '../utils/PontFileManager';
@@ -30,9 +30,9 @@ export class Config extends OldConfig {
     pontConfig: IPontConfig
   ): {
     standardBaseConfig: IStandardBaseConfig;
-    standardOirginConfigs: IStandardOirginConfig[];
+    standardOriginConfigs: IStandardOriginConfig[];
   } {
-    if (!pontConfig) return { standardBaseConfig: null, standardOirginConfigs: [] };
+    if (!pontConfig) return { standardBaseConfig: null, standardOriginConfigs: [] };
 
     const { origins, ...baseConfig } = pontConfig;
 
@@ -59,10 +59,10 @@ export class Config extends OldConfig {
         : []
     };
 
-    let standardOirginConfigs: IStandardOirginConfig[] = [];
+    let standardOriginConfigs: IStandardOriginConfig[] = [];
 
     if (Array.isArray(origins) && origins.length > 0) {
-      standardOirginConfigs = origins.map((origin) => {
+      standardOriginConfigs = origins.map((origin) => {
         const customTemplatePath = Config.getAbsolutePath(configDir, origin.customTemplatePath);
 
         return {
@@ -78,7 +78,7 @@ export class Config extends OldConfig {
         };
       });
     } else {
-      standardOirginConfigs = [
+      standardOriginConfigs = [
         {
           name: '',
           rootDir: standardBaseConfig.rootDir,
@@ -93,7 +93,7 @@ export class Config extends OldConfig {
       ];
     }
 
-    return { standardBaseConfig, standardOirginConfigs };
+    return { standardBaseConfig, standardOriginConfigs };
   }
 
   static getStandardConfigFromPath(
@@ -101,7 +101,7 @@ export class Config extends OldConfig {
     configDir: string
   ): {
     standardBaseConfig: IStandardBaseConfig;
-    standardOirginConfigs: IStandardOirginConfig[];
+    standardOriginConfigs: IStandardOriginConfig[];
   } {
     const pontConfig = Config.getPontConfigFromPath(configDir);
 

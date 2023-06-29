@@ -2,7 +2,7 @@
  * 自定义模板管理器
  */
 
-import type { IStandardBaseConfig, IStandardOirginConfig } from '../../types/pontConfig';
+import type { IStandardBaseConfig, IStandardOriginConfig } from '../../types/pontConfig';
 import type { Constructor } from '../../types';
 import { getTemplate } from '../../utils/templateHelp';
 import { CodeGenerator } from './CodeGenerator';
@@ -31,7 +31,7 @@ export class CustomTemplateManage {
     Logger.log(`[CustomTemplate] ${message}`, ...optionalParams);
   }
 
-  private static getCustomTemplate(config: IStandardOirginConfig): {
+  private static getCustomTemplate(config: IStandardOriginConfig): {
     OriginReader: Constructor<typeof OriginReader>;
     CodeGenerator: Constructor<typeof CodeGenerator>;
   } {
@@ -183,7 +183,7 @@ export class CustomTemplateManage {
   }
 
   static getOriginTemplate(
-    config: IStandardOirginConfig,
+    config: IStandardOriginConfig,
     options: {
       OriginReader: Constructor<typeof OriginReader>;
       CodeGenerator: Constructor<typeof CodeGenerator>;

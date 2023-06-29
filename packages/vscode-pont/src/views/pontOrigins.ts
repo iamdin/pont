@@ -40,7 +40,7 @@ class PontOriginsProvider implements vscode.TreeDataProvider<OriginTreeItem> {
   getChildren(element?: OriginTreeItem): Thenable<any[]> {
     if (!this.manager) return null;
 
-    const allConfigs = this.manager.getStandardOirginConfigs();
+    const allConfigs = this.manager.getStandardOriginConfigs();
     const baseConfig = this.manager.getStandardBaseConfig();
     const currentManager = this.manager.getCurrentOriginManage();
 
